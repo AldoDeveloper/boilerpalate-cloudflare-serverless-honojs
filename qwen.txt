@@ -1,0 +1,63 @@
+
+tambahkan api di bawah ini, di buat di folder modules dan clean arsitektur seperti yang sudah di buat contoh nya projects dan jangan lupa juga buatkan file migrations nya
+
+1. Skills/Tech Stack
+skills (
+  id TEXT,
+  name TEXT,
+  category TEXT, -- backend, frontend, devops
+  level TEXT -- beginner, intermediate, advanced
+);
+
+2. Architecture / Expertise
+expertise (
+  id TEXT,
+  title TEXT,
+  description TEXT
+)
+
+3. Certifications
+certifications (
+  id TEXT,
+  name TEXT,
+  issuer TEXT,
+  issue_date TEXT,
+  credential_url TEXT
+)
+
+4. Achievements / Highlights
+achievements (
+  id TEXT,
+  title TEXT,
+  description TEXT
+)
+
+5. Services / What You Offer
+services (
+  id TEXT,
+  title TEXT,
+  description TEXT
+)
+
+6. Blog / Articles
+articles (
+  id TEXT,
+  title TEXT,
+  slug TEXT,
+  content_md TEXT
+)
+
+7.Contact / Social Links
+contacts (
+  id TEXT,
+  type TEXT, -- github, linkedin, email
+  url TEXT
+)
+
+8.Open Source Contributions
+open_sources (
+  id TEXT,
+  project_name TEXT,
+  repo_url TEXT,
+  description TEXT
+)

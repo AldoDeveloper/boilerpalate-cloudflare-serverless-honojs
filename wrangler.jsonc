@@ -1,0 +1,53 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "api-cv",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-04-09",
+	"d1_databases": [
+		{
+			"binding": "api_cv_db",
+			"database_name": "api-cv-db",
+			"database_id": "f1fb0257-df5d-493d-8691-ff2e1fdaa33f"
+		},
+	],
+	 "images": {
+    	"binding": "IMAGES", // i.e. available in your Worker on env.IMAGES
+  	  },
+
+	  "vars": {
+		"CLOUDFLARE_ACCOUNT_ID" : "e6563148c17402209184d5fbd126e369"
+		// "CLOUDFLATE_API_TOKEN" : "cfk_N3Y6G1qY8GX1AGbSStsuazsKvTbZGWAcuccmVmNYa814ed27"
+	  },
+	// "compatibility_flags": [
+	//   "nodejs_compat"
+	// ],
+	// "vars": {
+	//   "MY_VAR": "my-variable"
+	// },
+	// "kv_namespaces": [
+	//   {
+	//     "binding": "MY_KV_NAMESPACE",
+	//     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	//   }
+	// ],
+	// "r2_buckets": [
+	//   {
+	//     "binding": "MY_BUCKET",
+	//     "bucket_name": "my-bucket"
+	//   }
+	// ],
+	// "d1_databases": [
+	//   {
+	//     "binding": "MY_DB",
+	//     "database_name": "my-database",
+	//     "database_id": ""
+	//   }
+	// ],
+	// "ai": {
+	//   "binding": "AI"
+	// },
+	// "observability": {
+	//   "enabled": true,
+	//   "head_sampling_rate": 1
+	// }
+}
