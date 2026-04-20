@@ -1,4 +1,4 @@
-# API CV - Cloudflare Worker CV/Portfolio API
+# Boilerplate API CV - Cloudflare Worker CV/Portfolio API
 
 A comprehensive RESTful API for managing CV/Portfolio data, built with **Hono** and deployed on **Cloudflare Workers**. Features Cloudflare D1 database, image processing, and HTTP Basic Authentication.
 
