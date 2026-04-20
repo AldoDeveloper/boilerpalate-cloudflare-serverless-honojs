@@ -19,8 +19,11 @@ export class SkillService extends BaseService {
 
     async findAll() {
         try {
-            return await this.repoSkill!.findAll();
-
+            const skills =  await this.repoSkill!.findAll<SkillDto>();
+            return skills.map(s => ({
+                ...s,
+                icon_svg: s.icon_svg ? atob(s.icon_svg) : null
+            })) 
         } catch (err: any) {
             throw new HTTPException(400, { message: `${err.message}` })
         }
@@ -47,7 +50,12 @@ export class SkillService extends BaseService {
 
     async findOne(id: string) {
         try {
-            return await this.repoSkill!.findOne(id);
+            const skill = await this.repoSkill!.findOne<SkillDto>(id);
+            return {
+                ...skill,
+                icon_svg: skill.icon_svg ? atob(skill.icon_svg) : null
+            };
+            
         } catch (err: any) {
             throw new HTTPException(400, { message: `${err.message}` })
         }

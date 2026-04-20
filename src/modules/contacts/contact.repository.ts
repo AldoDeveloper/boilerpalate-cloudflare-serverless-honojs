@@ -10,7 +10,7 @@ export class RepositoryContact {
         this.ctx = envCtx;
     }
 
-    async findAll() {
+    async findAll<T>() : Promise<T[]> {
 
         if (!this.ctx) throw new HTTPException(400, { message: "configurasi failed..." });
         const getPrepare = await this.ctx.api_cv_db.prepare(
@@ -23,7 +23,7 @@ export class RepositoryContact {
                 c.updated_at AS updated_at
             FROM contacts c`).all();
 
-        return getPrepare.results;
+        return getPrepare.results as T[];
     }
 
     async findOne(id: string) {

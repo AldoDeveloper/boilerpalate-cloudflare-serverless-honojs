@@ -5,7 +5,7 @@ CREATE TABLE educations (
 
   education_level TEXT CHECK (
     education_level IN (
-      'high_school',     -- SMA / SMK
+      'high_school',     -- SMA / SMK~
       'diploma',         -- D3
       'bachelor',        -- S1
       'master',          -- S2

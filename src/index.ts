@@ -1,27 +1,16 @@
 import { Hono } from 'hono'
 import module from './modules/module';
 import { logger } from 'hono/logger';
+import botTL from './modules/botTelegram/route';
+// import { rateLimiter } from './middleware/ratelimit.middleware';
 
 const app = new Hono<{Bindings : Cloudflare.Env }>();
+
 app.use(logger());
+// app.use(rateLimiter(1000, 60)); //limit 1000 request per minute
 
 app.route('/', module);
 
-app.post('/upload', async(c) => {
+app.route('/tele', botTL);
 
-    const formData = await c.req.formData();
-    const file = formData.get("image") as File;
-
-    const imageStream = file.stream(); 
-    
-    const imgResponse = await c.env.IMAGES
-      .input(imageStream)
-      .transform({ width: 250, height: 250 }).output({ 
-        format: 'image/png'
-    });
- 
-    return imgResponse.response();
-    
-});
-
-export default app
+export default app;

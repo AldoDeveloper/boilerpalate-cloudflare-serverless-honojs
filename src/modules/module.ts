@@ -17,6 +17,7 @@ import { baseErrorResponse } from "../core/base.reponse";
 import { HttpStatusMap } from "../core/http.error.code";
 import { UserService } from "./user/user.service";
 import images from "./images/routes";
+import contactForm from "./contactForm/routes";
 
 const module = new Hono<{Variables : UserVariables }>().basePath('/api');
 
@@ -41,6 +42,7 @@ module.route('/', contacts);
 module.route('/', openSources);
 module.route('/', profile);
 module.route('/', images);
+module.route('/', contactForm)
 
 module.onError((err: any, c) => {
     console.log(err);

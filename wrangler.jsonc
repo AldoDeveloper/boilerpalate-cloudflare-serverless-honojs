@@ -5,19 +5,27 @@
 	"compatibility_date": "2026-04-09",
 	"d1_databases": [
 		{
-			"binding": "api_cv_db",
-			"database_name": "api-cv-db",
-			"database_id": "f1fb0257-df5d-493d-8691-ff2e1fdaa33f"
+			"binding": "binding-name",
+			"database_name": "db-name",
+			"database_id": "db-id"
 		},
 	],
-	 "images": {
-    	"binding": "IMAGES", // i.e. available in your Worker on env.IMAGES
-  	  },
-
-	  "vars": {
-		"CLOUDFLARE_ACCOUNT_ID" : "e6563148c17402209184d5fbd126e369"
+	"images": {
+		"binding": "IMAGES", // i.e. available in your Worker on env.IMAGES
+	},
+	"vars": {
+		"CLOUDFLARE_ACCOUNT_ID": "your-account-id"
 		// "CLOUDFLATE_API_TOKEN" : "cfk_N3Y6G1qY8GX1AGbSStsuazsKvTbZGWAcuccmVmNYa814ed27"
-	  },
+	},
+	"kv_namespaces": [
+		{
+			"binding": "your-binding-KV",
+			"id": "KV-id"
+		}
+	],
+	//   "triggers": {
+	// 	 "crons": ["*/5 * * * *", "0 0 * * *"],
+	//    },
 	// "compatibility_flags": [
 	//   "nodejs_compat"
 	// ],

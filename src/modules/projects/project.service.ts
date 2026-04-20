@@ -19,7 +19,11 @@ export class ProjectService extends BaseService {
 
     async findAll() {
         try {
-            return await this.repoProject!.findAll();
+            const projects = await this.repoProject!.findAll<ProjectDto[]>();
+            return projects.map(p => ({
+                ...p,
+                tech_stacks: p.tech_stacks ? JSON.parse(p.tech_stacks) : []
+            }))
 
         } catch (err: any) {
             throw new HTTPException(400, { message: `${err.message}` })
@@ -30,7 +34,6 @@ export class ProjectService extends BaseService {
 
         try {
             await this.repoProject!.create(projectCreateDto);
-
             return `create new project successfuly.`;
         } catch (err: any) {
             throw new HTTPException(400, { message: `${err.message}` })
@@ -47,7 +50,16 @@ export class ProjectService extends BaseService {
 
     async findOne(id: string) {
         try {
-            return await this.repoProject!.findOne(id);
+            const project = await this.repoProject!.findOne<ProjectDto>(id);
+
+            if (project) {
+                return {
+                    ...project,
+                    tech_stacks: project.tech_stacks ? JSON.parse(project.tech_stacks) : []
+                }
+            }
+            
+            return null;
         } catch (err: any) {
             throw new HTTPException(400, { message: `${err.message}` })
         }

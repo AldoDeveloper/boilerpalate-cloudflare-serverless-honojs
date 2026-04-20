@@ -3,9 +3,11 @@ import { create, findAll, findOne, findOneBySlug, remove, update } from "./proje
 import { projectCreateValidator, projectUpdateValidator } from "./project.validator";
 import { ProjectService } from "./project.service";
 import { baseErrorResponse } from "../../core/base.reponse";
+import { mapBodyProject } from "./middleware/map.body";
 
 type ProjectVariables = {
-    projectService: ProjectService
+    projectService: ProjectService,
+    mapBody?: any
 }
 
 const project = new Hono<{ Variables: ProjectVariables }>().basePath('/projects');
@@ -15,8 +17,8 @@ project.use(async (c, next) => {
     await next()
 })
 
-project.post('/', projectCreateValidator, (c) => create(c, c.get('projectService')));
-project.patch('/:id', projectUpdateValidator, (c) => update(c, c.get('projectService')));
+project.post('/', projectCreateValidator, mapBodyProject, (c) => create(c, c.get('projectService')));
+project.patch('/:id', projectUpdateValidator, mapBodyProject, (c) => update(c, c.get('projectService')));
 
 project.get('/', (c) => findAll(c, c.get('projectService')));
 project.get('/:id', (c) => findOne(c, c.get('projectService')));

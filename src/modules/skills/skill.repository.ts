@@ -10,24 +10,26 @@ export class RepositorySkill {
         this.ctx = envCtx;
     }
 
-    async findAll() {
+    async findAll<T>() : Promise<T[]> {
 
         if (!this.ctx) throw new HTTPException(400, { message: "configurasi failed..." });
         const getPrepare = await this.ctx.api_cv_db.prepare(
             `SELECT
                 s.id AS id,
                 s.name AS name,
+                s.icon_svg AS icon_svg,
                 s.category AS category,
                 s.level AS level,
+                s.level_percent AS level_percent,
                 s.description AS description,
                 s.created_at AS created_at,
                 s.updated_at AS updated_at
             FROM skills s`).all();
 
-        return getPrepare.results;
+        return getPrepare.results as T[];
     }
 
-    async findOne(id: string) {
+    async findOne<T>(id: string) {
 
         if (!this.ctx) throw new HTTPException(400, { message: "configurasi failed..." });
 
@@ -35,8 +37,10 @@ export class RepositorySkill {
             SELECT
                 s.id AS id,
                 s.name AS name,
+                s.icon_svg AS icon_svg,
                 s.category AS category,
                 s.level AS level,
+                s.level_percent AS level_percent,
                 s.description AS description,
                 s.created_at AS created_at,
                 s.updated_at AS updated_at
@@ -44,7 +48,7 @@ export class RepositorySkill {
             WHERE s.id = ?
         `).bind(id).first()
 
-        return getSkill;
+        return getSkill as T;
     }
 
     async create(skillDto: SkillDto) {

@@ -1,0 +1,2 @@
+ALTER TABLE skills
+ADD COLUMN icon_svg TEXT;

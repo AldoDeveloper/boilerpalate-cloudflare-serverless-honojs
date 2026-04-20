@@ -13,7 +13,7 @@ const service = new Hono<{ Variables: ServiceVariables }>().basePath('/services'
 service.use(async (c, next) => {
     c.set('serviceService', ServiceService.instance(c.env as any))
     await next()
-})
+});
 
 service.post('/', serviceCreateValidator, (c) => create(c, c.get('serviceService')));
 service.patch('/:id', serviceUpdateValidator, (c) => update(c, c.get('serviceService')));

@@ -14,7 +14,7 @@ export const findAll = async (ctx: Context, projectService: ProjectService) => {
 
 export const create = async (ctx: Context, projectService: ProjectService) => {
 
-    const body = await ctx.req.json();
+    const body = ctx.get('mapBody') as ProjectDto;
     const result = await projectService.create(body);
 
     ctx.status(201);
@@ -54,7 +54,7 @@ export const remove = async (ctx: Context, projectService: ProjectService) => {
 
 export const update = async (ctx: Context, projectService: ProjectService) => {
     const { id } = ctx.req.param();
-    const body = await ctx.req.json<ProjectDto>();
+    const body = ctx.get('mapBody') as ProjectDto;
     const result = await projectService.update(id, body);
 
     return ctx.json(

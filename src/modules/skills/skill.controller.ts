@@ -13,7 +13,7 @@ export const findAll = async (ctx: Context, skillService: SkillService) => {
 };
 
 export const create = async (ctx: Context, skillService: SkillService) => {
-
+    
     const body = await ctx.req.json();
     const result = await skillService.create(body);
 

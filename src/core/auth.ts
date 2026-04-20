@@ -1,6 +1,5 @@
 import { basicAuth } from "hono/basic-auth";
 import { HTTPException } from "hono/http-exception";
-
 import bcrypt from "bcryptjs";
 import { UserService } from "../modules/user/user.service";
 
@@ -10,7 +9,7 @@ export const authenticationBasic = basicAuth({
         const userServices = c.get('userService') as UserService;
         const user   = await userServices.findByUsername(username);
 
-        if(!user)  throw new HTTPException(401, { message: "Unauthorized"});
+        if(!user) throw new HTTPException(401, { message: "Unauthorized"});
 
         if(!await bcrypt.compare(password, user.password))
             throw new HTTPException(401, { message: "Unauthorized"})

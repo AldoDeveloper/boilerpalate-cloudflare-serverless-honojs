@@ -60,7 +60,7 @@ export class RepositoryExperience {
 
     async create(experienceDto: ExperienceDto) {
 
-        experienceDto.id = crypto.randomUUID();
+        experienceDto.id = experienceDto.id ?? crypto.randomUUID();
         const keys   = Object.keys(experienceDto);
         const values = Object.values(experienceDto);
 

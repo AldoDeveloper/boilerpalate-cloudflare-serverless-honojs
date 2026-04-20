@@ -11,7 +11,7 @@ export class RepositoryProject {
         this.ctx = envCtx;
     }
 
-    async findAll() {
+    async findAll<TYPE extends Record<string, any> []>() {
 
         if (!this.ctx) throw new HTTPException(400, { message: "configurasi failed..." });
         const getPrepare = await this.ctx.api_cv_db.prepare(
@@ -25,14 +25,15 @@ export class RepositoryProject {
                 p.demo_url AS demo_url,
                 p.repo_url AS repo_url,
                 p.video_url AS video_url,
+                p.tech_stacks AS tech_stacks,
                 p.created_at AS created_at,
                 p.updated_at AS updated_at
             FROM projects p`).all();
 
-        return getPrepare.results;
+        return getPrepare.results as TYPE;
     }
 
-    async findOne(id: string) {
+    async findOne<TYPE extends Record<string, any>>(id: string) {
 
         if (!this.ctx) throw new HTTPException(400, { message: "configurasi failed..." });
 
@@ -47,13 +48,14 @@ export class RepositoryProject {
                 p.demo_url AS demo_url,
                 p.repo_url AS repo_url,
                 p.video_url AS video_url,
+                p.tech_stacks AS tech_stacks,
                 p.created_at AS created_at,
                 p.updated_at AS updated_at
             FROM projects p
             WHERE p.id = ?
         `).bind(id).first()
 
-        return getProject;
+        return getProject as TYPE;
     }
 
     async findOneBySlug(slug: string) {
@@ -71,6 +73,7 @@ export class RepositoryProject {
                 p.demo_url AS demo_url,
                 p.repo_url AS repo_url,
                 p.video_url AS video_url,
+                p.tech_stacks AS tech_stacks,
                 p.created_at AS created_at,
                 p.updated_at AS updated_at
             FROM projects p

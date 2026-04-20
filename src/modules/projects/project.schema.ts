@@ -7,7 +7,8 @@ export const projectSchema = z.object({
     content_md: z.string().optional(),
     thumbnail_url: z.string().url().optional().or(z.literal('')),
     demo_url: z.string().url().optional().or(z.literal('')),
-    repo_url: z.string().url().optional().or(z.literal(''))
+    repo_url: z.string().url().optional().or(z.literal('')),
+    tech_stacks: z.array(z.string()).optional() // comma-separated list of technologies used in the project save JSON array
 });
 
 export const projectUpdateSchema = z.object({
@@ -17,5 +18,6 @@ export const projectUpdateSchema = z.object({
     content_md: z.string().optional(),
     thumbnail_url: z.string().url().optional().or(z.literal('')),
     demo_url: z.string().url().optional().or(z.literal('')),
-    repo_url: z.string().url().optional().or(z.literal(''))
+    repo_url: z.string().url().optional().or(z.literal('')),
+    tech_stacks: z.array(z.string()).optional() // comma-separated list of technologies used in the project save JSON array
 });

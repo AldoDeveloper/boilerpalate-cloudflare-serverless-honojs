@@ -17,6 +17,7 @@ export class RepositoryService {
             `SELECT
                 s.id AS id,
                 s.title AS title,
+                s.icon AS icon,
                 s.description AS description,
                 s.price AS price,
                 s.created_at AS created_at,
@@ -34,6 +35,7 @@ export class RepositoryService {
             SELECT
                 s.id AS id,
                 s.title AS title,
+                s.icon AS icon,
                 s.description AS description,
                 s.price AS price,
                 s.created_at AS created_at,
