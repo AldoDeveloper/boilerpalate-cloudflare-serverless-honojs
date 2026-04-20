@@ -15,7 +15,6 @@
 	},
 	"vars": {
 		"CLOUDFLARE_ACCOUNT_ID": "your-account-id"
-		// "CLOUDFLATE_API_TOKEN" : "cfk_N3Y6G1qY8GX1AGbSStsuazsKvTbZGWAcuccmVmNYa814ed27"
 	},
 	"kv_namespaces": [
 		{
