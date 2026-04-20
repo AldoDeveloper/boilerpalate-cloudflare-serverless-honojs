@@ -10,7 +10,7 @@ export interface ITelegramOption{
 }
 
 export async function sendTelegramMessage({ chatId, message, env } : ITelegramOption) {
-  const url = `https://api.telegram.org/bot8553716523:AAF5tZR0itgEIJM7bmLzdR5P99AeX2b4wAU/sendMessage`;
+  const url = `https://api.telegram.org/bot(TOUR_TOKEN)/sendMessage`;
 
   await fetch(url, {
     method: "POST",
